@@ -7,15 +7,16 @@
     </ul>
 </nav>
 <div class="numbers form large-9 medium-8 columns content">
-    <?= $this->Form->create($number) ?>
+    <?= $this->Form->create($number, ['type' => 'file']) ?>
     <fieldset>
         <legend><?= __('Add Number') ?></legend>
         <?php
-            echo $this->Form->input('status');
+            $options = ['-1' => 'Negative', '0' => 'Neutral', '1'=>'Positive'];
+            echo $this->Form->select('status', $options);
             echo $this->Form->input('number');
             echo $this->Form->input('who');
             echo $this->Form->input('comment');
-            echo $this->Form->input('photo');
+            echo $this->Form->input('photo', ['type'=>'file', 'label'=>'Photo (Optional)']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
