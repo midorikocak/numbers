@@ -10,7 +10,7 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
- * @property \Cake\ORM\Association\HasMany $Comments
+ * @property \Cake\ORM\Association\HasMany $Numbers
  */
 class UsersTable extends Table
 {
@@ -31,7 +31,7 @@ class UsersTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->hasMany('Comments', [
+        $this->hasMany('Numbers', [
             'foreignKey' => 'user_id'
         ]);
     }

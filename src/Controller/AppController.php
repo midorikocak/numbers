@@ -45,7 +45,7 @@ class AppController extends Controller
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [
             'loginRedirect' => [
-                'controller' => 'Comments', // TODO: Go to number search
+                'controller' => 'Numbers', // TODO: Go to number search
                 'action' => 'index'
             ],
             'logoutRedirect' => [

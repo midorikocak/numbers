@@ -5,8 +5,8 @@
         <li><?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Comments'), ['controller' => 'Comments', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Comment'), ['controller' => 'Comments', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Numbers'), ['controller' => 'Numbers', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Number'), ['controller' => 'Numbers', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="users view large-9 medium-8 columns content">
@@ -58,8 +58,8 @@
         </tr>
     </table>
     <div class="related">
-        <h4><?= __('Related Comments') ?></h4>
-        <?php if (!empty($user->comments)): ?>
+        <h4><?= __('Related Numbers') ?></h4>
+        <?php if (!empty($user->numbers)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th><?= __('Id') ?></th>
@@ -71,19 +71,19 @@
                 <th><?= __('Photo') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
-            <?php foreach ($user->comments as $comments): ?>
+            <?php foreach ($user->numbers as $number): ?>
             <tr>
-                <td><?= h($comments->id) ?></td>
-                <td><?= h($comments->status) ?></td>
-                <td><?= h($comments->number) ?></td>
-                <td><?= h($comments->who) ?></td>
-                <td><?= h($comments->content) ?></td>
-                <td><?= h($comments->user_id) ?></td>
-                <td><?= h($comments->photo) ?></td>
+                <td><?= h($numbers->id) ?></td>
+                <td><?= h($numbers->status) ?></td>
+                <td><?= h($numbers->number) ?></td>
+                <td><?= h($numbers->who) ?></td>
+                <td><?= h($numbers->content) ?></td>
+                <td><?= h($numbers->user_id) ?></td>
+                <td><?= h($numbers->photo) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Comments', 'action' => 'view', $comments->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Comments', 'action' => 'edit', $comments->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Comments', 'action' => 'delete', $comments->id], ['confirm' => __('Are you sure you want to delete # {0}?', $comments->id)]) ?>
+                    <?= $this->Html->link(__('View'), ['controller' => 'Numbers', 'action' => 'view', $comments->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['controller' => 'Numbers', 'action' => 'edit', $comments->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Numbers', 'action' => 'delete', $comments->id], ['confirm' => __('Are you sure you want to delete # {0}?', $comments->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

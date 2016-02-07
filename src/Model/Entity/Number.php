@@ -4,7 +4,7 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Comment Entity.
+ * Number Entity.
  *
  * @property int $id
  * @property bool $status
@@ -15,7 +15,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\User $user
  * @property string $photo
  */
-class Comment extends Entity
+class Number extends Entity
 {
 
     /**

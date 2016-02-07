@@ -58,7 +58,7 @@ class UsersController extends AppController
     public function view($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => ['Comments']
+            'contain' => ['Numbers']
         ]);
 
         $this->set('user', $user);

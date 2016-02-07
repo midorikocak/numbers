@@ -36,8 +36,8 @@ class CommentsTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Comments') ? [] : ['className' => 'App\Model\Table\CommentsTable'];
-        $this->Comments = TableRegistry::get('Comments', $config);
+        $config = TableRegistry::exists('Numbers') ? [] : ['className' => 'App\Model\Table\CommentsTable'];
+        $this->Comments = TableRegistry::get('Numbers', $config);
     }
 
     /**

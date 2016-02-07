@@ -18,7 +18,7 @@ use Cake\ORM\Entity;
  * @property string $role
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
- * @property \App\Model\Entity\Comment[] $comments
+ * @property \App\Model\Entity\Number[] $comments
  */
 class User extends Entity
 {

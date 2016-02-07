@@ -1,18 +1,20 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Comment;
+use App\Model\Entity\Number;
 use Cake\ORM\Query;
+use Cake\Event\Event;
+use ArrayObject;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Comments Model
+ * Numbers Model
  *
  * @property \Cake\ORM\Association\BelongsTo $Users
  */
-class CommentsTable extends Table
+class NumbersTable extends Table
 {
 
     /**
@@ -25,7 +27,7 @@ class CommentsTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('comments');
+        $this->table('numbers');
         $this->displayField('id');
         $this->primaryKey('id');
 
@@ -67,8 +69,8 @@ class CommentsTable extends Table
             ->notEmpty('who');
 
         $validator
-            ->requirePresence('content', 'create')
-            ->notEmpty('content');
+            ->requirePresence('comment', 'create')
+            ->notEmpty('comment');
 
         $validator
             ->allowEmpty('photo');
@@ -84,8 +86,35 @@ class CommentsTable extends Table
              * Check if there is zero at beginning
              * Remove zero at the beginning
              */
-            $data['number'] = substr(preg_replace( '/(0*[^0-9])/', '', $data['number'] ), 0, 10);
+            $data['number'] = $this->cleanNumber($data['number']);
         }
+    }
+
+    public function cleanNumber($number){
+        $number = preg_replace( '/([^0-9])/', '', $number);
+        $number = preg_replace( '/(^0*)/', '', $number) ;
+        $number = substr($number, 0, 10);
+        return $number;
+    }
+    /*
+    public function get($primaryKey, $options = [])
+    {
+        $data = parent::get($primaryKey, $options);
+        $data['number'] = "0 ".substr($data['number'],0,3)." ".substr($data['number'],3,3)." ".substr($data['number'],6,2)." ".substr($data['number'],8,2);
+        return $data;
+    }
+    */
+
+    public function find($type = 'all', $options = [])
+    {
+        $data = parent::find($type, $options);
+
+        return $data->formatResults(function($r) {
+            return $r->map(function($r) {
+                $r['number'] = $this->showNumber($r['number']);
+                return $r;
+            });
+        });
     }
 
     /**
@@ -101,8 +130,13 @@ class CommentsTable extends Table
         return $rules;
     }
 
-    public function isOwnedBy($commentId, $userId)
+    public function showNumber($number){
+        $number = "0 ".substr($number,0,3)." ".substr($number,3,3)." ".substr($number,6,2)." ".substr($number,8,2);
+        return $number;
+    }
+
+    public function isOwnedBy($numberId, $userId)
     {
-        return $this->exists(['id' => $commentId, 'user_id' => $userId]);
+        return $this->exists(['id' => $numberId, 'user_id' => $userId]);
     }
 }

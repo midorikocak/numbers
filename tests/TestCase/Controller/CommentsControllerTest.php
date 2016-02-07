@@ -1,7 +1,7 @@
 <?php
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\CommentsController;
+use App\Controller\NumbersController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
